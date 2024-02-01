@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Services;
+
+use App\DataTransferObjects\QuoteDto;
 use GuzzleHttp\Client;
 
 class ZenQuotesService {
-    public function getQuotes(int $limit = 5){
+    public function getQuotes(int $limit = 5): array
+    {
         $client =  new Client();
         // Specify the API endpoint
         $apiEndpoint = 'https://zenquotes.io/api/quotes/';
@@ -28,24 +31,14 @@ class ZenQuotesService {
             }
         }
         
-        return array_slice($data, 0, $limit);
-    }
+        $data = array_slice($data, 0, $limit);
+    
+        $quotes = [];
+        foreach ($data as $value) {
+            $quote = new QuoteDto($value['q']);
+            $quotes[] = $quote;
+        }
 
-
-    public function getImages(int $number = 1){
-        
-        $client =  new Client();
-        // Specify the API endpoint
-        $apiEndpoint = 'https://zenquotes.io/api/image/';
-
-        // Make a GET request to the API
-        $response = $client->get($apiEndpoint);
-
-        // Get the response body as a JSON string
-        $jsonData = $response->getBody()->getContents();
-
-        // Decode the JSON data into an associative array
-        $data = json_decode($jsonData, true);
-
+        return $quotes;
     }
 }
