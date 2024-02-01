@@ -11,8 +11,10 @@ https://codefile.io/f/romiHbjZpg
 - Install laravel [x]
 - initialize sqlite database [x]
 - set seeders for default users [x]
-    - missing quotes but can be added with service later on
-
+    - add quotes in seeder from service []
+- create service to connect to https://zenquotes.io/ []
+- create Dto classes to handle information []
+- create service to random images []
 ....
 - Install docker to work in different machines
 - Test docker in windows machine
