@@ -24,7 +24,7 @@ class ZenQuotesService {
         foreach ($data as $value) {
             if (isset($value['q'])) {
                 $quote = $value['q'];
-                echo "Quote: $quote\n";
+                //echo "Quote: $quote\n";
             
             } else {
                 echo "Failed to retrieve a quote from the API.";
