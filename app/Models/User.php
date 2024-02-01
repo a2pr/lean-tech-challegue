@@ -42,4 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    // Define the relationship with posts
+    public function quotes()
+    {
+        return $this->hasMany(UserFavoriteQuote::class);
+    }
 }
