@@ -12,9 +12,9 @@ https://codefile.io/f/romiHbjZpg
 - initialize sqlite database [x]
 - set seeders for default users [x]
     - add quotes in seeder from service []
-- create service to connect to https://zenquotes.io/ []
-- create Dto classes to handle information []
-- create service to random images []
+- create service to connect to https://zenquotes.io/ [x]
+- create Dto classes to handle information [x]
+- create service to random images [x]
 ....
 - Install docker to work in different machines
 - Test docker in windows machine
