@@ -31,6 +31,11 @@ class ZenQuotesService {
             }
         }
         
+        if(empty($data)){
+            //limit of api request reached.
+            return [];
+        }
+
         $data = array_slice($data, 0, $limit);
     
         $quotes = [];
