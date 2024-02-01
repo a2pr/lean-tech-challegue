@@ -1,1 +1,0 @@
-# lean-tech-challegue
