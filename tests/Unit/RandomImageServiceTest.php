@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\DataTransferObjects\ImageDto;
 use PHPUnit\Framework\TestCase;
 use App\Services\RandomImageService;
 
@@ -14,7 +15,8 @@ class RandomImageServiceTest extends TestCase
     {
         $randomImageService = new RandomImageService();
         $result = $randomImageService->getRandomImage();
-        $this->assertNotTrue(empty($result));
-        
+        var_dump($result);
+        $this->assertInstanceOf(ImageDto::class, $result);
+        $this->assertNotEmpty($result->getLink());
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\DataTransferObjects\QuoteDto;
+use App\DataTransferObjects\ImageDto;
 use GuzzleHttp\Client;
 
 class RandomImageService {
@@ -19,6 +19,7 @@ class RandomImageService {
         // Get the response body as a JSON string
         $jsonData = $response->getBody()->getContents();
         
-        return $jsonData;
+        $imageDto = new ImageDto($jsonData);
+        return $imageDto;
     }
 }
