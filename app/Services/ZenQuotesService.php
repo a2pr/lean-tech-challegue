@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\DataTransferObjects\QuoteDto;
+use App\DataTransferObjects\QuoteServiceDto;
 use GuzzleHttp\Client;
 
 class ZenQuotesService {
@@ -40,7 +40,7 @@ class ZenQuotesService {
     
         $quotes = [];
         foreach ($data as $value) {
-            $quote = new QuoteDto($value['q']);
+            $quote = new QuoteServiceDto($value['q']);
             $quotes[] = $quote;
         }
 

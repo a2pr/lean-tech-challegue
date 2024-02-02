@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTransferObjects\QuoteDto;
+use App\DataTransferObjects\QuoteViewDto;
 use App\Services\RandomImageService;
 use App\Services\ZenQuotesService;
 use App\Models\Quote;
@@ -34,18 +34,21 @@ class TodayController extends Controller
         } else {
             
             $value = $quotes->random();
-            $quoteToViewDto = new QuoteDto($value['quote'], true);
+            $quoteToViewDto = new QuoteViewDto($value['id'], $value['quote'], true);
         }
 
         $image = $imageService->getRandomImage();
 
+        $authenticated = auth()->check();
+        //dd($quoteToViewDto);
         return Inertia::render('Today', [
-            'quote' => $quoteToViewDto->getQuote(),
+            'quoteDto' => $quoteToViewDto,
             'imageLink' => $image->getLink(),
-            'cached' => $quoteToViewDto->isCached()
+            'cached' => $quoteToViewDto->isCached(),
+            'isNew' => false,
+            'authenticatedUser'=> $authenticated
         ]);
     }
-
 
     /**
      * Display a listing of the resource.
@@ -61,15 +64,17 @@ class TodayController extends Controller
         $newQuote->quote = $quotes[0]->getQuote();
         $newQuote->save();
         
-        $quoteToViewDto = $quotes[0];
+        $quoteToViewDto = new QuoteViewDto($newQuote['id'], $newQuote['quote'], false);
     
-
+        $authenticated = auth()->check();
         $image = $imageService->getRandomImage();
 
         return Inertia::render('Today', [
-            'quote' => $quoteToViewDto->getQuote(),
+            'quoteDto' => $quoteToViewDto,
             'imageLink' => $image->getLink(),
-            'cached' => $quoteToViewDto->isCached()
+            'cached' => $quoteToViewDto->isCached(),
+            'isNew' => true,
+            'authenticatedUser'=> $authenticated
         ]);
     }
 

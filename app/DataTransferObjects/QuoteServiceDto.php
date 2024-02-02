@@ -2,7 +2,8 @@
 
 namespace App\DataTransferObjects;
 
-class QuoteDto {
+class QuoteServiceDto {
+
     public string $quote;
 
     public bool $cached;
