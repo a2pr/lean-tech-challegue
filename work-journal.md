@@ -37,10 +37,10 @@ https://codefile.io/f/romiHbjZpg
     - vue js components [x]
     - Remove quotes from list [x]
     - message when missing quotes [x]
-- Report of Favorite Quotes []
-    - Show all list for all []
-    - Remove quote from list []
-    - Login link with username []
+- Report of Favorite Quotes [x]
+    - Show all list for all [x]
+    - Remove quote from list [x]
+    - Login link with username [x]
 - Rest api for both five random and ten secure quotes
     - routes in api for both unautthenticated and authenticated users
     - same functionality as web 
