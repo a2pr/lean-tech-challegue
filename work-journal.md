@@ -25,6 +25,15 @@ https://codefile.io/f/romiHbjZpg
     - controller and service fetching (quotes from cache or service) [x]
     - reload functionality [x]
     - add quote to the favorite list of the user IF login [x]
+- Five Random Quotes 
+    - vue js components [x]
+    - reload functionality [x]
+    - redirects for authenticated users [x]
+- Ten secure Quotes
+    - vue js components [ ]
+    - reload functionality [ ]
+    - add each quote to the list favorites []
+    
     
 
 ....

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\TodayController;
 use App\Http\Controllers\UserFavoriteQuoteController;
 use Illuminate\Foundation\Application;
@@ -47,4 +48,16 @@ Route::get('/today/new', [TodayController::class, 'new'])->name('today.new');
 
 Route::get('/favorite/add/{id}', [UserFavoriteQuoteController::class, 'store'])
 ->middleware(['auth', 'verified'])->name('favorite.add');
+
+Route::get('/quotes', [QuoteController::class, 'index'])->name('quotes.index');
+Route::get('/quotes/new', [QuoteController::class, 'new'])->name('quotes.new');
+
+
+Route::get('/secure-quotes', [QuoteController::class, 'secure'])
+->middleware(['auth', 'verified'])->name('quotes.secure');
+
+Route::get('/secure-quotes/new', [QuoteController::class, 'secureAdd'])
+->middleware(['auth', 'verified'])->name('quotes.secure_add');
+
+
 require __DIR__.'/auth.php';
