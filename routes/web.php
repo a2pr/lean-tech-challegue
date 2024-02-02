@@ -47,7 +47,10 @@ Route::get('/today', [TodayController::class, 'index'])->name('today.index');
 Route::get('/today/new', [TodayController::class, 'new'])->name('today.new');
 
 Route::get('/favorite/add/{id}', [UserFavoriteQuoteController::class, 'store'])
-->middleware(['auth', 'verified'])->name('favorite.add');
+->middleware(['auth'])->name('favorite.add');
+
+Route::get('/favorite', [UserFavoriteQuoteController::class, 'index'])
+->middleware(['quotes'])->name('favorite.index');
 
 Route::get('/quotes', [QuoteController::class, 'index'])->name('quotes.index');
 Route::get('/quotes/new', [QuoteController::class, 'new'])->name('quotes.new');
