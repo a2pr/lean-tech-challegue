@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\DataTransferObjects\UserFavoriteQuoteViewDto;
+use App\DataTransferObjects\UserViewDto;
 use App\Models\Quote;
+use App\Models\User;
 use App\Models\UserFavoriteQuote;
 use Illuminate\Http\Request;
 use App\Facades\QuoteFacade;
@@ -37,6 +39,27 @@ class UserFavoriteQuoteController extends Controller
     public function create()
     {
         //
+    }
+
+    public function report()
+    {
+        $userModels = User::all();
+        $userViewDto = [];
+        foreach ($userModels as $value) {
+            $userViewDto[]= new UserViewDto($value['id'], $value['email'], $value['name']);
+        }
+        //$dto->quotes[] = []
+        foreach ($userViewDto as $dto) {
+            $userFavoriteQuoteModel = UserFavoriteQuote::where('user_id', $dto->user_id)->get();
+            foreach ($userFavoriteQuoteModel as $value) {
+                $userFavoriteQuoteViewDto = new UserFavoriteQuoteViewDto($value['id'], $value['user_id'],$value['quote']);
+                $dto->quotes[]= $userFavoriteQuoteViewDto;
+            }
+        }
+        
+        return Inertia::render('Favorite/report', [
+            'userView' => $userViewDto
+        ]);
     }
 
     /**

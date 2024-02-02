@@ -65,5 +65,8 @@ Route::get('/secure-quotes', [QuoteController::class, 'secure'])
 Route::get('/secure-quotes/new', [QuoteController::class, 'secureAdd'])
 ->middleware(['quotes'])->name('quotes.secure_add');
 
+Route::get('/report-favorite-quotes', [UserFavoriteQuoteController::class, 'report'])
+->middleware(['quotes'])->name('favorite.report');
+
 
 require __DIR__.'/auth.php';
