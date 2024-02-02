@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTransferObjects\QuoteViewDto;
 use App\Facades\ImageFacade;
 use App\Facades\QuoteFacade;
-use App\Services\RandomImageService;
-use App\Services\ZenQuotesService;
-use App\Models\Quote;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Illuminate\Support\Carbon;
 
 class TodayController extends Controller
 {
