@@ -47,7 +47,13 @@ Route::get('/today', [TodayController::class, 'index'])->name('today.index');
 Route::get('/today/new', [TodayController::class, 'new'])->name('today.new');
 
 Route::get('/favorite/add/{id}', [UserFavoriteQuoteController::class, 'store'])
-->middleware(['auth', 'verified'])->name('favorite.add');
+->middleware(['auth'])->name('favorite.add');
+
+Route::get('/favorite/remove/{id}', [UserFavoriteQuoteController::class, 'destroy'])
+->middleware(['auth'])->name('favorite.destroy');
+
+Route::get('/favorite', [UserFavoriteQuoteController::class, 'index'])
+->middleware(['quotes'])->name('favorite.index');
 
 Route::get('/quotes', [QuoteController::class, 'index'])->name('quotes.index');
 Route::get('/quotes/new', [QuoteController::class, 'new'])->name('quotes.new');
@@ -58,6 +64,9 @@ Route::get('/secure-quotes', [QuoteController::class, 'secure'])
 
 Route::get('/secure-quotes/new', [QuoteController::class, 'secureAdd'])
 ->middleware(['quotes'])->name('quotes.secure_add');
+
+Route::get('/report-favorite-quotes', [UserFavoriteQuoteController::class, 'report'])
+->middleware(['quotes'])->name('favorite.report');
 
 
 require __DIR__.'/auth.php';
