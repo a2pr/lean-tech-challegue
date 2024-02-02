@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use App\Services\ZenQuotesService;
-use App\DataTransferObjects\QuoteDto;
+use App\DataTransferObjects\QuoteServiceDto;
 use PHPUnit\Framework\TestCase;
 
 class ZenQuotesServiceTest extends TestCase
@@ -19,7 +19,7 @@ class ZenQuotesServiceTest extends TestCase
         $this->assertCount($limit, $result);
         $this->assertIsArray($result);
         foreach ($result as $value) {
-            $this->assertInstanceOf(QuoteDto::class, $value);
+            $this->assertInstanceOf(QuoteServiceDto::class, $value);
             $this->assertIsString($value->getQuote());
         }
     }

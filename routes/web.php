@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TodayController;
+use App\Http\Controllers\UserFavoriteQuoteController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,6 +27,10 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/', function () {
+    return redirect()->route('today.index');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -35,4 +41,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/today', [TodayController::class, 'index'])->name('today.index');
+
+Route::get('/today/new', [TodayController::class, 'new'])->name('today.new');
+
+Route::get('/favorite/add/{id}', [UserFavoriteQuoteController::class, 'store'])
+->middleware(['auth', 'verified'])->name('favorite.add');
 require __DIR__.'/auth.php';

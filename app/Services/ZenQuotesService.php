@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\DataTransferObjects\QuoteDto;
+use App\DataTransferObjects\QuoteServiceDto;
 use GuzzleHttp\Client;
 
 class ZenQuotesService {
@@ -24,7 +24,7 @@ class ZenQuotesService {
         foreach ($data as $value) {
             if (isset($value['q'])) {
                 $quote = $value['q'];
-                echo "Quote: $quote\n";
+                //echo "Quote: $quote\n";
             
             } else {
                 echo "Failed to retrieve a quote from the API.";
@@ -40,7 +40,7 @@ class ZenQuotesService {
     
         $quotes = [];
         foreach ($data as $value) {
-            $quote = new QuoteDto($value['q']);
+            $quote = new QuoteServiceDto($value['q']);
             $quotes[] = $quote;
         }
 
