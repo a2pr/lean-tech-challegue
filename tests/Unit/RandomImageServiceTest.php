@@ -15,7 +15,6 @@ class RandomImageServiceTest extends TestCase
     {
         $randomImageService = new RandomImageService();
         $result = $randomImageService->getRandomImage();
-        var_dump($result);
         $this->assertInstanceOf(ImageDto::class, $result);
         $this->assertNotEmpty($result->getLink());
     }

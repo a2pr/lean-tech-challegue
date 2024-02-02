@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DataTransferObjects\QuoteViewDto;
+use App\Facades\ImageFacade;
+use App\Facades\QuoteFacade;
 use App\Services\RandomImageService;
 use App\Services\ZenQuotesService;
 use App\Models\Quote;
@@ -17,34 +19,19 @@ class TodayController extends Controller
      */
     public function index()
     {
-        $quoteService = new ZenQuotesService;
-        $imageService = new RandomImageService;
+        $quoteFacade = new QuoteFacade;
+        $imageService = new ImageFacade;
 
-        $currentDateTime = Carbon::now();
-        $quotes = Quote::where('expire_ts', '>', $currentDateTime)->get();
-
-        if(count($quotes) == 0){  
-            $quotes = $quoteService->getQuotes(1);
-            //save in cache
-            $newQuote = new Quote();
-            $newQuote->quote = $quotes[0]->getQuote();
-            $newQuote->save();
-            
-            $quoteToViewDto = $quotes[0];
-        } else {
-            
-            $value = $quotes->random();
-            $quoteToViewDto = new QuoteViewDto($value['id'], $value['quote'], true);
-        }
-
+        $quoteToViewDto = $quoteFacade->getQuotes(1);
         $image = $imageService->getRandomImage();
 
         $authenticated = auth()->check();
-        //dd($quoteToViewDto);
+        
+        
         return Inertia::render('Today', [
-            'quoteDto' => $quoteToViewDto,
+            'quoteDto' => $quoteToViewDto[0],
             'imageLink' => $image->getLink(),
-            'cached' => $quoteToViewDto->isCached(),
+            'cached' => $quoteToViewDto[0]->isCached(),
             'isNew' => false,
             'authenticatedUser'=> $authenticated
         ]);
@@ -55,24 +42,17 @@ class TodayController extends Controller
      */
     public function new()
     {
-        $quoteService = new ZenQuotesService;
-        $imageService = new RandomImageService;
+        $quoteFacade = new QuoteFacade;
+        $imageService = new ImageFacade;
 
-        $quotes = $quoteService->getQuotes(1);
-        //save in cache
-        $newQuote = new Quote();
-        $newQuote->quote = $quotes[0]->getQuote();
-        $newQuote->save();
-        
-        $quoteToViewDto = new QuoteViewDto($newQuote['id'], $newQuote['quote'], false);
-    
+        $quoteToViewDto = $quoteFacade->getQuotesFromService(1);
         $authenticated = auth()->check();
         $image = $imageService->getRandomImage();
 
         return Inertia::render('Today', [
-            'quoteDto' => $quoteToViewDto,
+            'quoteDto' => $quoteToViewDto[0],
             'imageLink' => $image->getLink(),
-            'cached' => $quoteToViewDto->isCached(),
+            'cached' => $quoteToViewDto[0]->isCached(),
             'isNew' => true,
             'authenticatedUser'=> $authenticated
         ]);
