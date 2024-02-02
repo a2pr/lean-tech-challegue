@@ -30,9 +30,9 @@ https://codefile.io/f/romiHbjZpg
     - reload functionality [x]
     - redirects for authenticated users [x]
 - Ten secure Quotes
-    - vue js components [ ]
-    - reload functionality [ ]
-    - add each quote to the list favorites []
+    - vue js components [x]
+    - reload functionality [x]
+    - add each quote to the list favorites [x]
     
     
 
