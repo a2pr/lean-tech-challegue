@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TodayController;
+use App\Http\Controllers\UserFavoriteQuoteController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -44,4 +45,6 @@ Route::get('/today', [TodayController::class, 'index'])->name('today.index');
 
 Route::get('/today/new', [TodayController::class, 'new'])->name('today.new');
 
+Route::get('/favorite/add/{id}', [UserFavoriteQuoteController::class, 'store'])
+->middleware(['auth', 'verified'])->name('favorite.add');
 require __DIR__.'/auth.php';

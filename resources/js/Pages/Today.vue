@@ -28,7 +28,7 @@ defineProps({
             <a class="btn btn-primary" :href="route('today.new')"> Quote of the day</a>
         </div>
         <div v-if="authenticatedUser" class="col-6">
-            <a class="btn btn-primary" :href="route('today.new')"> Add to favorite list</a>
+            <a class="btn btn-primary" :href="route('favorite.add', {id: quoteDto.id})"> Add to favorite list</a>
         </div>
       </div>  
       
