@@ -49,6 +49,9 @@ Route::get('/today/new', [TodayController::class, 'new'])->name('today.new');
 Route::get('/favorite/add/{id}', [UserFavoriteQuoteController::class, 'store'])
 ->middleware(['auth'])->name('favorite.add');
 
+Route::get('/favorite/remove/{id}', [UserFavoriteQuoteController::class, 'destroy'])
+->middleware(['auth'])->name('favorite.destroy');
+
 Route::get('/favorite', [UserFavoriteQuoteController::class, 'index'])
 ->middleware(['quotes'])->name('favorite.index');
 

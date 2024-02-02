@@ -14,7 +14,7 @@ defineProps({
             <ul >
                 <li v-for="(value, key) in quotes" >
                     {{value.quote}}&nbsp;&nbsp;
-                    <a class="btn btn-danger" :href="route('favorite.add', {id: value.id})">remove</a>
+                    <a class="btn btn-danger" :href="route('favorite.destroy', {id: value.id})">remove</a>
                 </li>
             </ul>
         </div>

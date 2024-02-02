@@ -86,8 +86,11 @@ class UserFavoriteQuoteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UserFavoriteQuote $userFavoriteQuote)
+    public function destroy($id)
     {
-        //
+        $userFavoriteQuote = UserFavoriteQuote::find($id);
+        $userFavoriteQuote->delete();
+
+        return redirect()->route('favorite.index');
     }
 }
