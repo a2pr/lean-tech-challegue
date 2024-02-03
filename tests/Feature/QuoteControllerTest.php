@@ -47,12 +47,36 @@ class QuoteControllerTest extends TestCase
         $this->assertEquals(10,$count);
     }
 
+    public function testSecureQuotesNewRoute():void{
+        Quote::truncate();
+
+        $user = User::factory()->create();
+        $response = $this
+            ->actingAs($user)
+            ->get('/secure-quotes');
+
+        $response->assertOk();
+
+        $response = $this->get('/secure-quotes/new');
+        $response->assertOk();
+
+        $count = Quote::count();
+        $this->assertEquals(20,$count);
+    }
+
     public function testSecureQuotesRouteRedirectToQuote():void
     {
         $response = $this->get('/secure-quotes');
 
         $response->assertSessionHasNoErrors()
             ->assertRedirect('/quotes');
-            //need work
+    }
+
+    public function testSecureQuotesNewRouteRedirectToQuote():void
+    {
+        $response = $this->get('/secure-quotes/new');
+
+        $response->assertSessionHasNoErrors()
+            ->assertRedirect('/quotes');
     }
 }
