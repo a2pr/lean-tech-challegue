@@ -44,6 +44,8 @@ Route::post('/token', function (Request $request) {
 Route::get('/quotes', [QuoteApiController::class, 'index'])->name('quotes.api.index');
 Route::get('/quotes/new', [QuoteApiController::class, 'new'])->name('quotes.api.new');
 
-Route::middleware('auth:sanctum')->get('/secure-quotes', [QuoteApiController::class, 'secure'])->name('quotes.api.secure');
-Route::middleware('auth:sanctum')->get('/secure-quotes/new', [QuoteApiController::class, 'secureAdd'])->name('quotes.api.secureAdd');
+Route::middleware('auth:sanctum')->get('/secure-quotes', [QuoteApiController::class, 'secure'])
+->name('quotes.api.secure');
+Route::middleware('auth:sanctum')->get('/secure-quotes/new', [QuoteApiController::class, 'secureAdd'])
+->name('quotes.api.secureAdd');
 
