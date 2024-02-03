@@ -1,8 +1,11 @@
 # Documentation
 
+## Installation and setup
 - Install sail in your machine https://laravel.com/docs/10.x/installation#docker-installation-using-sail this is a prerequisite
 - copy .env.example to a new file .env
 - create an empty file in database folder, database.sqlite
+
+## Running project
 - From your cmd line run the following commands from the root of the project:
     - ./vendor/bin/sail build
 - From other cmd line window run: ./vendor/bin/sail npm install && ./vendor/bin/sail npm run dev
