@@ -68,17 +68,6 @@
                 ],
                 "summary": "Get new sercure quotes",
                 "operationId": "0f11598c8ef97fd92bb3c33713b14253",
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer Token",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
                 "requestBody": {
                     "content": {
                         "application/json": {}
