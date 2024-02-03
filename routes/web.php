@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/today', [TodayController::class, 'index'])->name('today.index');
 Route::get('/today/new', [TodayController::class, 'new'])->name('today.new');
 
-Route::get('/favorite', [UserFavoriteQuoteController::class, 'index'])->middleware(['quotes'])->name('favorite.index');
+Route::get('/favorite-quotes', [UserFavoriteQuoteController::class, 'index'])->middleware(['quotes'])->name('favorite.index');
 Route::get('/favorite/add/{id}', [UserFavoriteQuoteController::class, 'store'])->middleware(['auth'])->name('favorite.add');
 Route::get('/favorite/remove/{id}', [UserFavoriteQuoteController::class, 'destroy'])->middleware(['auth'])->name('favorite.destroy');
 
