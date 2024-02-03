@@ -12,7 +12,6 @@ class UserFavoriteQuoteControllerTest extends TestCase
 
     public function testFavoriteQuotesReturnsOkForLoginUsers(): void
     {
-        
         $user = User::factory()->create();
         $response = $this
         ->actingAs($user)
