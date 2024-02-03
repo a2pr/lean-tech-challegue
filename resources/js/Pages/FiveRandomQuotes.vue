@@ -1,4 +1,5 @@
 <script setup>
+import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 defineProps({
     quotes: {
         type: Array,
@@ -8,6 +9,7 @@ defineProps({
 </script>
 
 <template>
+    <DefaultLayout>
     <div>
         <ul>
             <li v-for="(value, key) in quotes" >
@@ -22,5 +24,6 @@ defineProps({
       </div>  
       
     </div>
+</DefaultLayout>
 </template>
   
