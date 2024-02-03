@@ -58,5 +58,8 @@ Route::get('/secure-quotes/new', [QuoteController::class, 'secureAdd'])->middlew
 
 Route::get('/report-favorite-quotes', [UserFavoriteQuoteController::class, 'report'])->middleware(['quotes'])->name('favorite.report');
 
+Route::get('/api-test',function(){
+    return redirect('/api/documentation');
+});
 
 require __DIR__.'/auth.php';

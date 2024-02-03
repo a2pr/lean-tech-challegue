@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "e3e49fff-beab-4780-b738-965cfac31f68",
+		"name": "lean tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12945371"
+	},
+	"item": [
+		{
+			"name": "create token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"{{email}}\",\n    \"password\":\"{{password}}\",\n    \"device_name\":\"Postman\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/token",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "quotes new",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/quotes/new",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"quotes",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "quotes",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/quotes",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"quotes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "secure quotes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|2d9CAMfcw1OWQO7y86OMWIwLsUcF4vYjXmwEHKoce26b81c2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/secure-quotes",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"secure-quotes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "secure quotes new",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|2d9CAMfcw1OWQO7y86OMWIwLsUcF4vYjXmwEHKoce26b81c2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/secure-quotes/new",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"secure-quotes",
+						"new"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:8000/",
+			"type": "string"
+		},
+		{
+			"key": "email",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
