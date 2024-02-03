@@ -1,4 +1,5 @@
 <script setup>
+import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 defineProps({
     userView: {
         type: Array,
@@ -8,6 +9,7 @@ defineProps({
 </script>
 
 <template>
+    <DefaultLayout>
     <h1>Favorite list</h1>
     <br><br>
     <div>
@@ -26,5 +28,6 @@ defineProps({
             </div>
         </div>
     </div>
+</DefaultLayout>
 </template>
   

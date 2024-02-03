@@ -1,4 +1,5 @@
 <script setup>
+import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 defineProps({
     quotes: {
         type: Array,
@@ -8,6 +9,7 @@ defineProps({
 </script>
 
 <template>
+    <DefaultLayout>
     <h1>Favorite list</h1>
     <div>
         <div v-if="quotes.length > 0">
@@ -24,5 +26,6 @@ defineProps({
             <a class="btn btn-primary" :href="route('quotes.index')"> Get quotes here</a>
         </div>
     </div>
+</DefaultLayout>
 </template>
   
