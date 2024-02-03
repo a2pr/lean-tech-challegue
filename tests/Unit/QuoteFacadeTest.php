@@ -17,10 +17,10 @@ class QuoteFacadeTest extends TestCase
     }
 
 
-//    public function tearDown(): void
-//    {
-//        Quote::truncate();
-//    }
+    public function tearDown(): void
+    {
+        Quote::truncate();
+    }
 
     /**
      * A basic unit test example.
@@ -55,7 +55,6 @@ class QuoteFacadeTest extends TestCase
     }
 
     public function testGetQuotesFromCache(){
-        Quote::truncate();
         $quoteFacade = new QuoteFacade;
 
         $testQuote1 = new Quote();
@@ -72,7 +71,6 @@ class QuoteFacadeTest extends TestCase
     }
 
     public function testGetQuotesFromCacheMissingQuotes(){
-        Quote::truncate();
         $quoteFacade = new QuoteFacade;
 
         $testQuote1 = new Quote();
@@ -85,7 +83,6 @@ class QuoteFacadeTest extends TestCase
     }
 
     public function testGetQuotesComesFromService(){
-        Quote::truncate();
         $quoteFacade = new QuoteFacade;
 
         $result = $quoteFacade->getQuotes(2);
@@ -97,7 +94,6 @@ class QuoteFacadeTest extends TestCase
     }
 
     public function testGetQuotesComesFromCache(){
-        Quote::truncate();
         $quoteFacade = new QuoteFacade;
 
         $testQuote1 = new Quote();
