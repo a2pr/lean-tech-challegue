@@ -23,6 +23,9 @@ import { ref } from 'vue';
   <li class="nav-item">
     <a class="nav-link" :href="route('dashboard')">Dashboard</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" :href="route('login')">Login</a>
+  </li>
 </ul>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

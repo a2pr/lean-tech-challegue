@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         foreach ($pass as $value) {
             DB::table('users')->insert([
                 'name' => Str::random(10),
-                'email' => $value[0].rand(1,100).'@example.com',
+                'email' => $value[0].'@example.com',
                 'password' => Hash::make($value[1]),
             ]);
         }
