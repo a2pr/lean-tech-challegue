@@ -42,8 +42,11 @@ https://codefile.io/f/romiHbjZpg
     - Remove quote from list [x]
     - Login link with username [x]
 - Rest api for both five random and ten secure quotes
-    - routes in api for both unautthenticated and authenticated users
-    - same functionality as web 
+    - routes in api for both unautthenticated and authenticated users [x]
+    - same functionality as web [x]
+    - response for unauthenticated is empty with 401 [x]
+-  API test zone
+    - create 
     
 
 ....

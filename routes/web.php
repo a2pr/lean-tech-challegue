@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\TodayController;
 use App\Http\Controllers\UserFavoriteQuoteController;
 use Illuminate\Foundation\Application;
