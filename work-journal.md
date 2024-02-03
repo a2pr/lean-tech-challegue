@@ -47,7 +47,10 @@ https://codefile.io/f/romiHbjZpg
     - response for unauthenticated is empty with 401 [x]
  
 - Update controllers to match requirement use feature test to verify []
-- Make test for relevelant components in facade []
+- Make test for relevelant components in facade [x]
+- swagger ui implementation set [x]
+- Postman collection set up [x]
+
 
 ....
 - Install docker to work in different machines
