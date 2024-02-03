@@ -8,11 +8,25 @@ use App\Models\Quote;
 use Illuminate\Http\Request;
 use App\Facades\QuoteFacade;
 use App\Http\Controllers\Controller;
+use OpenApi\Annotations as OA;
 
+
+/**
+ * @OA\Info(
+ *    title="Quote api",
+ *    version="1.0.0",
+ * )
+ */
 class QuoteApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/quotes",
+     *     tags={"Quotes"},
+     *     summary="Get quotes",
+     *     @OA\Response(response="200", description="List of quotes"),
+     *     @OA\Response(response="401", description="Unauthorized"),
+     * )
      */
     public function index()
     {
@@ -26,6 +40,15 @@ class QuoteApiController extends Controller
         return response()->json(['quotes' => $quotes], 200);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/quotes/new",
+     *     tags={"Quotes"},
+     *     summary="Get quotes",
+     *     @OA\Response(response="200", description="fetch a new list of quotes"),
+     *     @OA\Response(response="401", description="Unauthorized"),
+     * )
+     */
     public function new()
     {
         $quoteFacade = new QuoteFacade;
@@ -39,6 +62,16 @@ class QuoteApiController extends Controller
         return response()->json(['quotes' => $quotes], 200);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/secure-quotes",
+     *     tags={"Quotes"},
+     *     summary="Get secure quotes",
+    *     security={{"bearerAuth": {}}},
+     *     @OA\Response(response="200", description="List of secure quotes"),
+     *     @OA\Response(response="401", description="Unauthorized"),
+     * )
+     */
     public function secure()
     {
         $quoteFacade = new QuoteFacade;
@@ -51,7 +84,22 @@ class QuoteApiController extends Controller
         return response()->json(['quotes' => $quotes], 200);
     }
 
-
+    /**
+     * 
+     * @OA\Post(
+     *     path="/api/secure-quotes/new",
+     *     tags={"Quotes"},
+     *     summary="Get new sercure quotes",
+    *     security={{ "bearerAuth": {} }},
+     *     @OA\RequestBody(
+    *         @OA\MediaType(
+    *             mediaType="application/json",
+    *         )
+    *      ),
+    *      @OA\Response(response="200", description="List of quotes"),
+     *     @OA\Response(response="401", description="Unauthorized"),
+    * )
+    */
     public function secureAdd()
     {
         $quoteFacade = new QuoteFacade;

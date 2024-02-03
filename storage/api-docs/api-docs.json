@@ -1,0 +1,103 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Quote api",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/quotes": {
+            "get": {
+                "tags": [
+                    "Quotes"
+                ],
+                "summary": "Get quotes",
+                "operationId": "b9206d3da7972d36c53c0024660fbec3",
+                "responses": {
+                    "200": {
+                        "description": "List of quotes"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/quotes/new": {
+            "get": {
+                "tags": [
+                    "Quotes"
+                ],
+                "summary": "Get quotes",
+                "operationId": "7e12c215df1d25484092feac110bc9c7",
+                "responses": {
+                    "200": {
+                        "description": "fetch a new list of quotes"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/secure-quotes": {
+            "get": {
+                "tags": [
+                    "Quotes"
+                ],
+                "summary": "Get secure quotes",
+                "operationId": "60936624adf69dc59f5eccbbef790a46",
+                "responses": {
+                    "200": {
+                        "description": "List of secure quotes"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/secure-quotes/new": {
+            "post": {
+                "tags": [
+                    "Quotes"
+                ],
+                "summary": "Get new sercure quotes",
+                "operationId": "0f11598c8ef97fd92bb3c33713b14253",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer Token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "List of quotes"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    }
+}
