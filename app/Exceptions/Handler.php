@@ -29,13 +29,21 @@ class Handler extends ExceptionHandler
         });
     }
 
-    /**
-     * Convert an authentication exception into a response.
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    protected function unauthenticated($request, AuthenticationException $exception)
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof AuthenticationException && $this->isApiRequest($request)) {
+            return $this->handleApiAuthenticationError($request, $exception);
+        }
+
+        return parent::render($request, $exception);
+    }
+
+    protected function isApiRequest($request)
+    {
+        return $request->expectsJson() || strpos($request->path(), 'api') !== false;
+    }
+
+    protected function handleApiAuthenticationError($request, $exception)
     {
         return response()->json([], 401);
     }

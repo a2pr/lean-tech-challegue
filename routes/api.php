@@ -46,6 +46,6 @@ Route::get('/quotes/new', [QuoteApiController::class, 'new'])->name('quotes.api.
 
 Route::middleware('auth:sanctum')->get('/secure-quotes', [QuoteApiController::class, 'secure'])
 ->name('quotes.api.secure');
-Route::middleware('auth:sanctum')->get('/secure-quotes/new', [QuoteApiController::class, 'secureAdd'])
+Route::middleware('auth:sanctum')->post('/secure-quotes/new', [QuoteApiController::class, 'secureAdd'])
 ->name('quotes.api.secureAdd');
 

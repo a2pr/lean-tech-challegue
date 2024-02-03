@@ -45,9 +45,9 @@ https://codefile.io/f/romiHbjZpg
     - routes in api for both unautthenticated and authenticated users [x]
     - same functionality as web [x]
     - response for unauthenticated is empty with 401 [x]
--  API test zone
-    - create 
-    
+ 
+- Update controllers to match requirement use feature test to verify []
+- Make test for relevelant components in facade []
 
 ....
 - Install docker to work in different machines
