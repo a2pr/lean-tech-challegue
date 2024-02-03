@@ -5,19 +5,13 @@ namespace App\Services;
 use App\DataTransferObjects\QuoteServiceDto;
 use GuzzleHttp\Client;
 
+use function PHPUnit\Framework\isInstanceOf;
+
 class ZenQuotesService {
     public function getQuotes(int $limit = 5): array
     {
-        $client =  new Client();
-        // Specify the API endpoint
-        $apiEndpoint = 'https://zenquotes.io/api/quotes/';
-
-        // Make a GET request to the API
-        $response = $client->get($apiEndpoint);
-
         // Get the response body as a JSON string
-        $jsonData = $response->getBody()->getContents();
-
+        $jsonData = $this->makeRequest()->getBody()->getContents();
         // Decode the JSON data into an associative array
         $data = json_decode($jsonData, true);
 
@@ -45,5 +39,14 @@ class ZenQuotesService {
         }
 
         return $quotes;
+    }
+
+    public function makeRequest(){
+        $client =  new Client();
+        // Specify the API endpoint
+        $apiEndpoint = 'https://zenquotes.io/api/quotes/';
+
+        // Make a GET request to the API
+        return $client->get($apiEndpoint);
     }
 }
