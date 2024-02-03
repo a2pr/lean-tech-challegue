@@ -1,4 +1,5 @@
 <script setup>
+import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 defineProps({
     quoteDto: {
         type: Object,
@@ -20,6 +21,7 @@ defineProps({
 </script>
 
 <template>
+    <DefaultLayout>
     <div>
       <h3>{{ quoteDto.quote }} <cite v-if="cached">"cached"</cite><cite v-else>"New"</cite> </h3>
       <img :src="imageLink" alt="">
@@ -33,5 +35,6 @@ defineProps({
       </div>  
       
     </div>
+    </DefaultLayout>
 </template>
   
