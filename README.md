@@ -3,7 +3,7 @@
 # Installation and setup
 
 ## Prerequisites
-- copy .env.example to a new file .env
+- copy .env.example content into a new file .env
 - create an empty file in database folder, database.sqlite
 
 ## linux or MacOs machine
@@ -20,7 +20,7 @@
 ## Windows machine
 - Install PHP version 8.2 and enable following extensions: fileinfo, sqlite3, 
 - in php.ini make sure latest curl certificate https://matomo.org/faq/troubleshooting/what-to-do-when-you-see-curl-60-ssl-certificate-problem-unable-to-get-local-issuer-certificate-error/#:~:text=Error%20%E2%80%9Ccurl%3A%20(60),se%2Fca%2Fcacert.pem
--  Install git, npm and composer and their corresponding instances
+-  Install git, npm and composer and their corresponding dependencies.
 
 ### Running project
 From your cmd lines in the root folder run the following commands:
