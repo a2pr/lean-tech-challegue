@@ -10,9 +10,12 @@ use Tests\TestCase;
 
 class QuoteControllerTest extends TestCase
 {
+    protected function tearDown(): void
+    {
+        Quote::truncate();
+    }
 
     public function testQuotesRoute():void{
-        Quote::truncate();
         $response = $this->get('/quotes');
 
         $response->assertOk();
@@ -20,8 +23,14 @@ class QuoteControllerTest extends TestCase
         $this->assertEquals(5,$count);
     }
 
-    public function testQuotesNewRoute():void{
-        Quote::truncate();
+    public function testQuotesRouteRedirectSecureQuote():void
+    {
+        $user = User::factory()->create();
+        $response = $this->actingAs($user)->get('/quotes')->assertRedirect('/secure-quotes');
+    }
+
+    public function testQuotesNewRoute():void
+    {
         $response = $this->get('/quotes');
 
         $response->assertOk();
@@ -34,9 +43,8 @@ class QuoteControllerTest extends TestCase
         $this->assertEquals(10,$count);
     }
 
-    public function testSecureQuotesRoute():void{
-        Quote::truncate();
-
+    public function testSecureQuotesRoute():void
+    {
         $user = User::factory()->create();
         $response = $this
         ->actingAs($user)
@@ -47,9 +55,8 @@ class QuoteControllerTest extends TestCase
         $this->assertEquals(10,$count);
     }
 
-    public function testSecureQuotesNewRoute():void{
-        Quote::truncate();
-
+    public function testSecureQuotesNewRoute():void
+    {
         $user = User::factory()->create();
         $response = $this
             ->actingAs($user)
