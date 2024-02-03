@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use App\Http\Controllers\Api\QuoteApiController;
 use App\Models\User;
 
 /*
@@ -39,4 +40,12 @@ Route::post('/token', function (Request $request) {
  
     return $user->createToken($request->device_name, ['*'], now()->addDay())->plainTextToken;
 });
+
+Route::get('/quotes', [QuoteApiController::class, 'index'])->name('quotes.api.index');
+Route::get('/quotes/new', [QuoteApiController::class, 'new'])->name('quotes.api.new');
+
+Route::middleware('auth:sanctum')->get('/secure-quotes', [QuoteApiController::class, 'secure'])
+->name('quotes.api.secure');
+Route::middleware('auth:sanctum')->get('/secure-quotes/new', [QuoteApiController::class, 'secureAdd'])
+->name('quotes.api.secureAdd');
 
